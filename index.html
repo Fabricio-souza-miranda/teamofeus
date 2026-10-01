@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="description" content="Team OFEUS — treinamento personalizado, consultoria online e acompanhamento presencial com Yan Gabriel." />
+  <title>Team OFEUS — O foco é um só.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f6f6f4;
+      --paper: #ffffff;
+      --ink: #0a0a0a;
+      --accent: #2563EB;
+      /* Azul moderno e vibrante */
+      --muted: #6d6d68;
+      --line: #deded9;
+      --dark: #0b0b0b;
+      --radius: 24px;
+      --shadow: 0 28px 80px rgba(0, 0, 0, .08);
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Manrope', system-ui, sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    /* Efeito de fade-in global */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Header com efeito Glassmorphism aprimorado */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(246, 246, 244, 0.65);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+    }
+
+    .nav-wrap {
+      height: 84px;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    /* Alinhamento perfeito da logo e texto */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-mark img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1.1;
+    }
+
+    .brand-copy strong {
+      font-size: 14px;
+      letter-spacing: .13em;
+      font-weight: 800;
+    }
+
+    .brand-copy small {
+      margin-top: 3px;
+      font-size: 9px;
+      letter-spacing: .2em;
+      color: #777;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    /* Navegação */
+    .desktop-nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    .desktop-nav a {
+      font-size: 14px;
+      font-weight: 600;
+      color: #71716c;
+      transition: .2s;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--ink);
+    }
+
+    /* Botão Navbar com fundo preto */
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .25s;
+      cursor: pointer;
+      padding: 12px 22px;
+      background: var(--ink);
+      color: #fff;
+      border: 2px solid var(--ink);
+    }
+
+    .nav-cta:hover {
+      background: transparent;
+      color: var(--ink);
+      transform: translateY(-2px);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      transition: .25s;
+      cursor: pointer;
+    }
+
+    .menu-toggle {
+      display: none;
+      margin-left: auto;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    /* Menu Mobile com Animação Suave */
+    .mobile-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(246, 246, 244, 0.98);
+      border-bottom: 1px solid var(--line);
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0 24px;
+      transform: translateY(-12px);
+      transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease, padding 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 420px;
+      opacity: 1;
+      transform: translateY(0);
+      padding: 10px 24px 22px;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 40px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 68px;
+      min-height: 600px;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 11px;
+      font-weight: 800;
+      color: #555;
+    }
+
+    .eyebrow span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ink);
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: clamp(54px, 6.6vw, 96px);
+      line-height: 1;
+      letter-spacing: -.04em;
+      margin: 23px 0 26px;
+    }
+
+    .hero h1 .regular-weight {
+      font-weight: 400;
+      font-size: 0.9em;
+    }
+
+    .hero h1 .highlight-bold {
+      display: block;
+      font-size: 1.1em;
+      font-weight: 800;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    .hero-lead {
+      max-width: 590px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 0 0 34px;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: #fff;
+      padding: 18px 28px;
+      font-weight: 800;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .text-link {
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .proof-row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-top: 54px;
+    }
+
+    .proof {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proof strong {
+      font-size: 16px;
+      color: var(--ink);
+    }
+
+    .proof span {
+      font-size: 12px;
+      color: #888;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .proof-divider {
+      width: 2px;
+      height: 34px;
+      background: var(--line);
+    }
+
+    /* Foto principal */
+    .hero-visual {
+      position: relative;
+      min-height: 600px;
+      display: grid;
+      place-items: center;
+    }
+
+    .photo-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 580px;
+      aspect-ratio: 4/5;
+      z-index: 3;
+      border-radius: 32px;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Selo Glassmorphism */
+    .seal {
+      position: absolute;
+      z-index: 5;
+      right: -5%;
+      bottom: 10%;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
+      color: var(--ink);
+    }
+
+    .seal:before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px dashed rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+    }
+
+    .seal span {
+      font-size: 9px;
+      letter-spacing: .15em;
+      font-weight: 800;
+      z-index: 1;
+    }
+
+    .seal strong {
+      font-size: 22px;
+      letter-spacing: .05em;
+      z-index: 1;
+      margin: 4px 0;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    /* Botão Flutuante do WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 62px;
+      height: 62px;
+      background-color: #25D366;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+      z-index: 999;
+      animation: floatWhatsapp 3s ease-in-out infinite;
+      transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.12);
+      background-color: #20ba5a;
+      box-shadow: 0 14px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    .whatsapp-float svg {
+      width: 34px;
+      height: 34px;
+      fill: #ffffff;
+    }
+
+    @keyframes floatWhatsapp {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-9px);
+      }
+    }
+
+    /* Ticker Animado (Fita Infinita) */
+    .ticker {
+      overflow: hidden;
+      background: var(--ink);
+      color: #fff;
+      border-block: 2px solid #222;
+    }
+
+    .ticker-track {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      padding: 24px 0;
+      font-size: 18px;
+      letter-spacing: .15em;
+      font-weight: 800;
+      text-transform: uppercase;
+      animation: marquee 35s linear infinite;
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-right: 30px;
+    }
+
+    .ticker svg {
+      width: 24px;
+      height: 24px;
+      fill: #fff;
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Seções Genéricas */
+    .section {
+      padding: 125px 0;
+    }
+
+    .two-col,
+    .section-head,
+    .process-grid,
+    .faq-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 80px;
+    }
+
+    .section h2 {
+      font-size: clamp(42px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      margin: 0;
+      font-weight: 800;
+    }
+
+    .section h2 .bold-caps {
+      color: var(--accent);
+      background: transparent;
+      padding: 0;
+      display: inline-block;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .intro {
+      background: #fff;
+    }
+
+    .intro-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .intro-copy-text {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #444;
+      margin: 24px 0 0 0;
+      font-weight: 500;
+    }
+
+    /* Grid Processos */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 82px;
+    }
+
+    .pillar {
+      padding: 40px 30px;
+      border-radius: 24px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s;
+      border: 1px solid var(--line);
+      background: #fdfdfc;
+    }
+
+    .pillar:hover {
+      transform: translateY(-10px);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .pillar span {
+      font-size: 12px;
+      letter-spacing: .2em;
+      color: var(--ink);
+      font-weight: 800;
+      background: var(--bg);
+      padding: 6px 12px;
+      border-radius: 99px;
+      align-self: flex-start;
+      border: 1px solid var(--line);
+    }
+
+    .pillar h3 {
+      margin: 40px 0 12px;
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pillar-icon {
+      width: 24px;
+      height: 24px;
+      fill: var(--ink);
+    }
+
+    .pillar p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* Serviços (Planos) */
+    .services {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .services .section-kicker {
+      color: #aaa;
+    }
+
+    .services .section-head>p {
+      margin: 32px 0 0;
+      color: #aaa;
+      line-height: 1.8;
+      font-size: 16px;
+      max-width: 500px;
+      justify-self: end;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 30px;
+      margin-top: 68px;
+    }
+
+    .service-card {
+      position: relative;
+      background: #171717;
+      border: 1px solid #2b2b2b;
+      border-radius: 32px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      min-height: 700px;
+    }
+
+    .service-card.featured {
+      background: #222;
+      border: 2px solid #555;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .featured-tag {
+      display: inline-flex;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #fff;
+      color: #000;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 10px;
+      font-weight: 800;
+      margin-bottom: 30px;
+      align-self: flex-start;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .card-number {
+      display: block;
+      color: #888;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      margin: 0;
+      font-size: 42px;
+      line-height: 1.05;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .card-intro {
+      color: #aaa;
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 30px 0;
+      font-weight: 500;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      flex-grow: 1;
+    }
+
+    .feature-list>div {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .feature-list span {
+      font-size: 14px;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .feature-list p {
+      margin: 0;
+      font-size: 14px;
+      color: #ddd;
+      font-weight: 500;
+    }
+
+    .strong-feature p {
+      font-weight: 800 !important;
+      color: #fff !important;
+      text-transform: uppercase;
+    }
+
+    .card-link {
+      margin-top: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      color: #000;
+      border-radius: 999px;
+      padding: 20px;
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      transition: 0.3s;
+      gap: 10px;
+    }
+
+    .card-link:hover {
+      background: #ddd;
+    }
+
+    .service-card:not(.featured) .card-link {
+      background: #333;
+      color: #fff;
+    }
+
+    .service-card:not(.featured) .card-link:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* FAQ */
+    .faq {
+      background: #f9f9f9;
+    }
+
+    .faq-list {
+      border-top: 1px solid var(--line);
+    }
+
+    details {
+      border-bottom: 1px solid var(--line);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 30px 10px;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s;
+    }
+
+    summary:hover {
+      color: #555;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary:after {
+      content: '+';
+      font-size: 24px;
+      font-weight: 400;
+      transition: transform 0.3s;
+    }
+
+    details[open] summary:after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+
+    details p {
+      max-height: 0;
+      opacity: 0;
+      margin: 0;
+      padding: 0 10px;
+      color: #555;
+      line-height: 1.8;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.4s ease-in-out;
+    }
+
+    details[open] p {
+      max-height: 500px;
+      opacity: 1;
+      padding-bottom: 30px;
+    }
+
+    /* Statement / Impacto */
+    .statement {
+      padding: 140px 0;
+      background: var(--ink);
+      color: #fff;
+      text-align: center;
+    }
+
+    .statement-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .quote-icon {
+      font-size: 80px;
+      line-height: 1;
+      color: var(--accent);
+      font-family: serif;
+      font-weight: bold;
+      margin-bottom: -20px;
+    }
+
+    .statement h2 {
+      font-size: clamp(40px, 6vw, 72px);
+      letter-spacing: -0.02em;
+      font-weight: 800;
+    }
+
+    .quote-author {
+      font-size: 20px;
+      font-weight: 600;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 10px;
+    }
+
+    /* Contato */
+    .contact {
+      padding-top: 80px;
+      padding-bottom: 80px;
+      background: #fff;
+    }
+
+    .contact-box {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 40px;
+      padding: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 50px;
+    }
+
+    .contact h2 {
+      font-size: clamp(44px, 5vw, 72px);
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 280px;
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--ink);
+      padding: 18px 24px;
+      font-weight: 800;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-outline {
+      border: 2px solid #444;
+      color: #fff;
+      padding: 18px 24px;
+      font-weight: 800;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-light:hover,
+    .btn-outline:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-outline:hover {
+      border-color: #fff;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--ink);
+      color: #fff;
+      padding: 40px 0;
+      border-top: 1px solid #222;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .footer-brand .brand-mark img {
+      filter: invert(1);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .social-link:hover {
+      color: var(--accent);
+    }
+
+    .social-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .footer-info {
+      text-align: right;
+    }
+
+    .footer-info p {
+      font-size: 12px;
+      color: #888;
+      margin: 0 0 6px 0;
+      font-weight: 500;
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: #888;
+      font-weight: 700;
+    }
+
+    /* Responsivo - Ajustes de Mobile */
+    @media (max-width: 1000px) {
+
+      .desktop-nav,
+      .nav-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+        border: none;
+        background: transparent;
+        font-size: 24px;
+      }
+
+      .mobile-menu a {
+        padding: 15px 0;
+        font-size: 16px;
+        font-weight: 700;
+        border-bottom: 1px solid #e8e8e3;
+      }
+
+      .mobile-menu .mobile-cta {
+        background: var(--ink);
+        color: #fff;
+        text-align: center;
+        border-radius: 999px;
+        margin-top: 10px;
+        border: none;
+      }
+
+      /* Redução da distância imensa da foto para o texto na Seção 01 */
+      .hero {
+        padding: 20px 0 50px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        /* Reduzido de 68px */
+        min-height: auto;
+      }
+
+      .hero-visual {
+        min-height: auto;
+      }
+
+      /* Centralização dos botões e elementos da Seção 01 */
+      .hero-copy {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-lead {
+        margin-inline: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .proof-row {
+        justify-content: center;
+      }
+
+      .two-col,
+      .section-head,
+      .process-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pillars {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 50px 30px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+      }
+
+      .footer-socials {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .footer-info {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+      }
+
+      .hero-actions .btn-primary {
+        width: 100%;
+      }
+
+      .photo-wrap {
+        max-width: 100%;
+      }
+
+      .seal {
+        width: 110px;
+        height: 110px;
+        right: 0;
+        bottom: 5%;
+      }
+
+      .seal strong {
+        font-size: 16px;
+      }
+
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        padding: 30px;
+      }
+
+      .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 54px;
+        height: 54px;
+      }
+
+      .whatsapp-float svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="Team OFEUS — início">
+        <span class="brand-mark"><img src="img/logo.png" alt="Logo Team OFEUS"></span>
+        <span class="brand-copy">
+          <strong>TEAM OFEUS</strong>
+          <small>O FOCO É UM SÓ</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#metodo">Método</a>
+        <a href="#servicos">Planos</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="nav-cta" href="#contato">COMEÇAR AGORA ↗</a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" id="menuBtn">☰</button>
+    </div>
+
+    <!-- Menu Mobile Animado -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#inicio">Início</a>
+      <a href="#metodo">Método</a>
+      <a href="#servicos">Planos</a>
+      <a href="#faq">FAQ</a>
+      <a class="mobile-cta" href="#contato">COMEÇAR AGORA ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy fade-in">
+          <div class="eyebrow"><span></span> TREINAMENTO PERSONALIZADO</div>
+          <h1><span class="regular-weight">O FOCO É</span><br><span class="highlight-bold">UM SÓ.</span></h1>
+          <p class="hero-lead">Treinos pensados para o seu momento, acompanhamento de verdade e uma estratégia que evolui junto com você.</p>
+          <div class="hero-actions">
+            <a href="#servicos" class="btn btn-primary">VER OPÇÕES DE TREINO ↓</a>
+            <a href="#metodo" class="text-link">COMO FUNCIONA ↗</a>
+          </div>
+          <div class="proof-row">
+            <div class="proof"><strong>100%</strong><span>INDIVIDUALIZADO</span></div>
+            <div class="proof-divider"></div>
+            <div class="proof"><strong>ONLINE & PRESENCIAL</strong><span>FORMAS DE ACOMPANHAR</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual fade-in">
+          <div class="photo-wrap">
+            <img src="img/foto.png" alt="Yan Gabriel durante um treino" class="hero-photo" />
+          </div>
+          <div class="seal">
+            <span>TEAM</span>
+            <strong>OFEUS</strong>
+            <span>ONLINE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fita Animada com ícones (Raio, Troféu e Halter) -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track" id="tickerTrack">
+        <div class="ticker-item">
+          <span>TEAM OFEUS</span>
+          <!-- Ícone de Raio -->
+          <svg viewBox="0 0 24 24">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+          <span>O FOCO É UM SÓ</span>
+          <!-- Ícone de Troféu -->
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1c1.86-.47 3.25-1.96 3.61-3.96C19.08 11.63 21 9.55 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
+          </svg>
+          <span>TÁ PAGO</span>
+          <!-- Ícone de Halter -->
+          <svg viewBox="0 0 24 24">
+            <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
+          </svg>
+          <span>VITÓRIA</span>
+          <!-- Ícone de Raio -->
+          <svg viewBox="0 0 24 24">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+          <span>DISCIPLINA</span>
+          <!-- Ícone de Troféu -->
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1c1.86-.47 3.25-1.96 3.61-3.96C19.08 11.63 21 9.55 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
+          </svg>
+          <span>DETERMINAÇÃO</span>
+          <!-- Ícone de Halter -->
+          <svg viewBox="0 0 24 24">
+            <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
+          </svg>
+          <span>GUERREIRO</span>
+          <!-- Ícone de Raio -->
+          <svg viewBox="0 0 24 24">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+          <span>GUERREIRA</span>
+          <!-- Ícone de Troféu -->
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1c1.86-.47 3.25-1.96 3.61-3.96C19.08 11.63 21 9.55 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
+          </svg>
+          <span>CAMPEÃO</span>
+          <!-- Ícone de Raio -->
+          <svg viewBox="0 0 24 24">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+          <span>CAMPEÃ</span>
+          <!-- Ícone de Halter -->
+          <svg viewBox="0 0 24 24">
+            <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <section class="section intro" id="metodo">
+      <div class="container fade-in">
+        <div class="intro-header">
+          <p class="section-kicker">01 / O MÉTODO</p>
+          <h2>Não é só montar um treino.<br><span class="bold-caps">É SABER O QUE FAZER DEPOIS.</span></h2>
+          <p class="intro-copy-text">O Team OFEUS parte da ideia de que um bom treino precisa fazer sentido para a sua rotina. Por isso, o acompanhamento combina planejamento, avaliação, ajustes e suporte para que você não fique treinando no automático.</p>
+        </div>
+      </div>
+
+      <div class="container pillars fade-in">
+        <article class="pillar">
+          <span>01</span>
+          <h3>
+            <svg class="pillar-icon" viewBox="0 0 24 24">
+              <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+            Avaliar
+          </h3>
+          <p>Entender seu momento, seus objetivos e o que precisa mudar para o treino fazer sentido para você.</p>
+        </article>
+        <article class="pillar">
+          <span>02</span>
+          <h3>
+            <svg class="pillar-icon" viewBox="0 0 24 24">
+              <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
+            </svg>
+            Planejar
+          </h3>
+          <p>Estruturar um treino individualizado, com progressão e organização para a sua rotina.</p>
+        </article>
+        <article class="pillar">
+          <span>03</span>
+          <h3>
+            <svg class="pillar-icon" viewBox="0 0 24 24">
+              <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
+            </svg>
+            Acompanhar
+          </h3>
+          <p>Você tem suporte para tirar dúvidas, registrar evolução e entender o caminho do seu processo.</p>
+        </article>
+        <article class="pillar">
+          <span>04</span>
+          <h3>
+            <svg class="pillar-icon" viewBox="0 0 24 24">
+              <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .43-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.49-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
+            </svg>
+            Ajustar
+          </h3>
+          <p>Com o passar do tempo, o planejamento é revisto para continuar acompanhando sua evolução.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section services" id="servicos">
+      <div class="container section-head fade-in">
+        <div>
+          <p class="section-kicker">02 / ESCOLHA SEU ACOMPANHAMENTO</p>
+          <h2>Duas formas de treinar.<br><span class="bold-caps">O MESMO FOCO.</span></h2>
+        </div>
+        <p>Na consultoria e no presencial, a base do acompanhamento é individualizada. A principal diferença é simples: no presencial, Yan está ao seu lado durante a sessão.</p>
+      </div>
+
+      <div class="container service-grid fade-in">
+
+        <!-- Plano Consultoria -->
+        <article class="service-card" id="consultoria">
+          <div class="card-top">
+            <div>
+              <span class="card-number">01</span>
+              <h3>Consultoria <br>OFEUS</h3>
+            </div>
+          </div>
+          <p class="card-intro">Para quem quer acompanhamento e planejamento sem precisar ter o instrutor fisicamente ao lado.</p>
+          <div class="feature-list">
+            <div><span>✓</span>
+              <p>Planejamento de treino individualizado</p>
+            </div>
+            <div><span>✓</span>
+              <p>Avaliação e acompanhamento da evolução</p>
+            </div>
+            <div><span>✓</span>
+              <p>Feedback e reajustes ao longo do processo</p>
+            </div>
+            <div><span>✓</span>
+              <p>App de treino para organizar sua rotina</p>
+            </div>
+            <div><span>✓</span>
+              <p>Suporte pelo WhatsApp para dúvidas</p>
+            </div>
+          </div>
+          <a class="card-link" href="#contato">CONHECER A CONSULTORIA ↗</a>
+        </article>
+
+        <!-- Plano Presencial (Destaque) -->
+        <article class="service-card featured" id="presencial">
+          <div class="featured-tag">ACOMPANHAMENTO COMPLETO</div>
+          <div class="card-top">
+            <div>
+              <span class="card-number">02</span>
+              <h3>Treino <br>PRESENCIAL</h3>
+            </div>
+          </div>
+          <p class="card-intro">Tudo que existe na consultoria, com a presença do instrutor para orientar a execução durante o treino.</p>
+          <div class="feature-list">
+            <div><span>✓</span>
+              <p>Planejamento de treino individualizado</p>
+            </div>
+            <div><span>✓</span>
+              <p>Avaliação, feedback e reajustes</p>
+            </div>
+            <div><span>✓</span>
+              <p>App de treino e organização da rotina</p>
+            </div>
+            <div><span>✓</span>
+              <p>Suporte para dúvidas e acompanhamento</p>
+            </div>
+            <div class="strong-feature"><span>✓</span>
+              <p>PRESENÇA DO INSTRUTOR NA AULA</p>
+            </div>
+          </div>
+          <a class="card-link" href="#contato">AGENDAR UMA AULA PRESENCIAL ↗</a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section statement">
+      <div class="container fade-in statement-content">
+        <div class="quote-icon">“</div>
+        <h2>Você não precisa treinar mais.<br><span class="bold-caps">PRECISA TREINAR COM DIREÇÃO.</span></h2>
+        <div class="quote-author">— Yan Gabriel</div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="container faq-grid fade-in">
+        <div>
+          <p class="section-kicker">03 / DÚVIDAS</p>
+          <h2>PERGUNTAS<br><span class="bold-caps">FREQUENTES.</span></h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>A consultoria é totalmente online?</summary>
+            <p>Sim. O planejamento, o suporte e os acompanhamentos da consultoria acontecem de forma online, com uso do app de treino e suporte para dúvidas.</p>
+          </details>
+          <details>
+            <summary>O que muda no treino presencial?</summary>
+            <p>A base do acompanhamento continua sendo individualizada, mas no presencial você também conta com a presença do instrutor durante a aula para orientar a execução.</p>
+          </details>
+          <details>
+            <summary>O treino pode ser ajustado depois?</summary>
+            <p>Sim. O processo prevê avaliações, feedbacks e reajustes conforme o acompanhamento evolui.</p>
+          </details>
+          <details>
+            <summary>Posso tirar dúvidas durante a consultoria?</summary>
+            <p>Sim. A proposta inclui suporte para dúvidas e acompanhamento do processo pelo canal definido com o aluno.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contato">
+      <div class="container contact-box fade-in">
+        <div>
+          <p class="section-kicker">04 / COMECE</p>
+          <h2>O foco é um só.<br><span class="bold-caps">O SEU.</span></h2>
+          <p class="contact-copy" style="max-width:400px; color:#bbb; margin-top:20px; font-weight:500;">Escolha a forma de acompanhamento que faz sentido para sua rotina e dê o primeiro passo.</p>
+        </div>
+        <div class="contact-actions">
+          <a href="#consultoria" class="btn btn-light">QUERO CONSULTORIA ONLINE ↗</a>
+          <a href="#presencial" class="btn btn-outline">QUERO TREINO PRESENCIAL ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Botão Flutuante do WhatsApp -->
+  <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.31C14.12 13.56 13.66 14.11 13.5 14.27C13.33 14.44 13.17 14.46 12.92 14.33C12.67 14.21 11.88 13.94 10.95 13.11C10.22 12.46 9.73 11.66 9.58 11.41C9.42 11.16 9.56 11 9.73 10.87C9.88 10.74 10.05 10.51 10.2 10.33C10.37 10.16 10.42 10.03 10.53 9.81C10.64 9.59 10.58 9.4 10.5 9.25C10.42 9.1 9.73 7.41 9.44 6.74C9.16 6.09 8.88 6.18 8.68 6.18C8.5 6.18 8.31 6.18 8.1 6.18C7.9 6.18 7.5 6.2 7.25 6.45V7.33Z" />
+    </svg>
+  </a>
+
+  <footer class="site-footer">
+    <div class="container footer-grid fade-in">
+      <div class="brand footer-brand">
+        <span class="brand-mark"><img src="img/logo.png" alt="Logo Team OFEUS"></span>
+        <span class="brand-copy"><strong>TEAM OFEUS</strong><small>O FOCO É UM SÓ</small></span>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/yanggabrieel/" target="_blank" class="social-link">
+          <svg viewBox="0 0 24 24">
+            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5Z" />
+          </svg>
+          CONHEÇA MEU TRABALHO
+        </a>
+        <a href="https://wa.me/5500000000000" target="_blank" class="social-link">
+          <svg viewBox="0 0 24 24">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.31C14.12 13.56 13.66 14.11 13.5 14.27C13.33 14.44 13.17 14.46 12.92 14.33C12.67 14.21 11.88 13.94 10.95 13.11C10.22 12.46 9.73 11.66 9.58 11.41C9.42 11.16 9.56 11 9.73 10.87C9.88 10.74 10.05 10.51 10.2 10.33C10.37 10.16 10.42 10.03 10.53 9.81C10.64 9.59 10.58 9.4 10.5 9.25C10.42 9.1 9.73 7.41 9.44 6.74C9.16 6.09 8.88 6.18 8.68 6.18C8.5 6.18 8.31 6.18 8.1 6.18C7.9 6.18 7.5 6.2 7.25 6.45V7.33Z" />
+          </svg>
+          FALE COMIGO
+        </a>
+      </div>
+
+      <div class="footer-info">
+        <p>Treinamento personalizado, consultoria e acompanhamento presencial.</p>
+        <div class="footer-note">© <span id="year"></span> TEAM OFEUS</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Menu mobile toggle com animação
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuBtn.textContent = isOpen ? '✕' : '☰';
+    });
+
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    // Atualiza o ano no rodapé automaticamente
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+
+    // Smooth Scroll para links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Duplicação do Ticker para rolagem infinita contínua
+    const tickerTrack = document.getElementById('tickerTrack');
+    if (tickerTrack) {
+      const tickerContent = tickerTrack.innerHTML;
+      tickerTrack.innerHTML = tickerContent + tickerContent + tickerContent + tickerContent;
+    }
+
+    // Fade-in via IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // FAQ Accordion
+    const details = document.querySelectorAll('details');
+    details.forEach(targetDetail => {
+      targetDetail.addEventListener('click', () => {
+        details.forEach(detail => {
+          if (detail !== targetDetail) {
+            detail.removeAttribute('open');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
