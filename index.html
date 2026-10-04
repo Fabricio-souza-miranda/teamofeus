@@ -17,7 +17,6 @@
       --paper: #ffffff;
       --ink: #0a0a0a;
       --accent: #2563EB;
-      /* Azul moderno e vibrante */
       --muted: #6d6d68;
       --line: #deded9;
       --dark: #0b0b0b;
@@ -57,7 +56,7 @@
       margin-inline: auto;
     }
 
-    /* Efeito de fade-in global */
+    /* Animações Globais */
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -69,7 +68,7 @@
       transform: translateY(0);
     }
 
-    /* Header com efeito Glassmorphism aprimorado */
+    /* Header */
     .site-header {
       position: sticky;
       top: 0;
@@ -87,12 +86,10 @@
       gap: 34px;
     }
 
-    /* Alinhamento perfeito da logo e texto */
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      text-decoration: none;
     }
 
     .brand-mark {
@@ -108,7 +105,6 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      display: block;
     }
 
     .brand-copy {
@@ -129,11 +125,9 @@
       font-size: 9px;
       letter-spacing: .2em;
       color: #777;
-      white-space: nowrap;
       font-weight: 700;
     }
 
-    /* Navegação */
     .desktop-nav {
       display: flex;
       gap: 28px;
@@ -152,7 +146,6 @@
       color: var(--ink);
     }
 
-    /* Botão Navbar com fundo preto */
     .nav-cta {
       display: inline-flex;
       align-items: center;
@@ -199,7 +192,6 @@
       transition: background-color 0.2s, transform 0.2s;
     }
 
-    /* Menu Mobile com Animação Suave */
     .mobile-menu {
       display: flex;
       flex-direction: column;
@@ -215,7 +207,7 @@
     }
 
     .mobile-menu.open {
-      max-height: 420px;
+      max-height: 460px;
       opacity: 1;
       transform: translateY(0);
       padding: 10px 24px 22px;
@@ -344,7 +336,6 @@
       background: var(--line);
     }
 
-    /* Foto principal */
     .hero-visual {
       position: relative;
       min-height: 600px;
@@ -369,7 +360,6 @@
       object-fit: cover;
     }
 
-    /* Selo Glassmorphism */
     .seal {
       position: absolute;
       z-index: 5;
@@ -412,10 +402,8 @@
       z-index: 1;
       margin: 4px 0;
       font-weight: 800;
-      color: var(--ink);
     }
 
-    /* Botão Flutuante do WhatsApp */
     .whatsapp-float {
       position: fixed;
       bottom: 28px;
@@ -458,7 +446,6 @@
       }
     }
 
-    /* Ticker Animado (Fita Infinita) */
     .ticker {
       overflow: hidden;
       background: var(--ink);
@@ -502,7 +489,7 @@
       }
     }
 
-    /* Seções Genéricas */
+    /* Seções */
     .section {
       padding: 125px 0;
     }
@@ -526,8 +513,6 @@
 
     .section h2 .bold-caps {
       color: var(--accent);
-      background: transparent;
-      padding: 0;
       display: inline-block;
       text-transform: uppercase;
       font-weight: 800;
@@ -554,7 +539,6 @@
       font-weight: 500;
     }
 
-    /* Grid Processos */
     .pillars {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -615,7 +599,212 @@
       font-weight: 500;
     }
 
-    /* Serviços (Planos) */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 32px;
+      margin-top: 60px;
+      border: 1px solid var(--line);
+      background: #000;
+      box-shadow: var(--shadow);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ------------- CERTIFICAÇÕES CARROSSEL OTIMIZADO ------------- */
+    .certifications {
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .cert-carousel-wrap {
+      margin-top: 60px;
+      width: 100%;
+      position: relative;
+      /* EFEITO FADE NAS PONTAS (Gradient Mask) */
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .cert-carousel {
+      display: flex;
+      gap: 24px;
+      padding: 10px 0 30px;
+      /* Margem pra sombra e controle */
+      overflow-x: auto;
+      scroll-behavior: auto;
+      -webkit-overflow-scrolling: touch;
+      cursor: grab;
+      /* Oculta scrollbar */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .cert-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cert-carousel:active {
+      cursor: grabbing;
+    }
+
+    .cert-card {
+      flex: 0 0 320px;
+      padding: 40px 32px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+      user-select: none;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+
+    .cert-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 12px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .cert-card p {
+      margin: 0 0 24px 0;
+      color: #555;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .cert-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ink);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      transition: 0.25s;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .cert-btn:hover {
+      background: #333;
+      transform: translateY(-2px);
+    }
+
+    /* ------------- RESTANTE DAS SEÇÕES ------------- */
+    .shapes {
+      background: var(--bg);
+    }
+
+    .shapes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .shape-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--line);
+    }
+
+    .shape-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .shape-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .feedbacks {
+      background: #fff;
+    }
+
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .feedback-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      transition: transform 0.3s;
+    }
+
+    .feedback-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .feedback-stars {
+      color: #eab308;
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+
+    .feedback-text {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #444;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .feedback-author {
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feedback-author::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--accent);
+      display: block;
+    }
+
     .services {
       background: var(--dark);
       color: #fff;
@@ -768,7 +957,6 @@
       color: #000;
     }
 
-    /* FAQ */
     .faq {
       background: #f9f9f9;
     }
@@ -833,7 +1021,6 @@
       padding-bottom: 30px;
     }
 
-    /* Statement / Impacto */
     .statement {
       padding: 140px 0;
       background: var(--ink);
@@ -872,7 +1059,6 @@
       margin-top: 10px;
     }
 
-    /* Contato */
     .contact {
       padding-top: 80px;
       padding-bottom: 80px;
@@ -901,9 +1087,8 @@
       min-width: 280px;
     }
 
-    .btn-light {
-      background: #fff;
-      color: var(--ink);
+    .btn-light,
+    .btn-outline {
       padding: 18px 24px;
       font-weight: 800;
       border-radius: 999px;
@@ -913,16 +1098,14 @@
       gap: 10px;
     }
 
+    .btn-light {
+      background: #fff;
+      color: var(--ink);
+    }
+
     .btn-outline {
       border: 2px solid #444;
       color: #fff;
-      padding: 18px 24px;
-      font-weight: 800;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
     }
 
     .btn-light:hover,
@@ -934,7 +1117,6 @@
       border-color: #fff;
     }
 
-    /* Footer */
     .site-footer {
       background: var(--ink);
       color: #fff;
@@ -966,7 +1148,6 @@
       font-size: 14px;
       font-weight: 700;
       color: #fff;
-      text-decoration: none;
       transition: color 0.2s;
     }
 
@@ -997,7 +1178,7 @@
       font-weight: 700;
     }
 
-    /* Responsivo - Ajustes de Mobile */
+    /* Mobile */
     @media (max-width: 1000px) {
 
       .desktop-nav,
@@ -1028,7 +1209,6 @@
         border: none;
       }
 
-      /* Redução da distância imensa da foto para o texto na Seção 01 */
       .hero {
         padding: 20px 0 50px;
       }
@@ -1036,7 +1216,6 @@
       .hero-grid {
         grid-template-columns: 1fr;
         gap: 32px;
-        /* Reduzido de 68px */
         min-height: auto;
       }
 
@@ -1044,7 +1223,6 @@
         min-height: auto;
       }
 
-      /* Centralização dos botões e elementos da Seção 01 */
       .hero-copy {
         text-align: center;
         display: flex;
@@ -1100,6 +1278,12 @@
       .footer-info {
         text-align: center;
       }
+
+      /* Ajuste suave do fade no mobile para não comer o conteúdo */
+      .cert-carousel-wrap {
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+      }
     }
 
     @media (max-width: 650px) {
@@ -1151,6 +1335,13 @@
         width: 28px;
         height: 28px;
       }
+
+      .cert-card {
+        flex: 0 0 280px;
+        padding: 30px 24px;
+      }
+
+      /* Ajuste Card no Mobile */
     }
   </style>
 </head>
@@ -1170,8 +1361,10 @@
       <nav class="desktop-nav" aria-label="Navegação principal">
         <a href="#inicio">Início</a>
         <a href="#metodo">Método</a>
+        <a href="#apresentacao">Sobre</a>
+        <a href="#certificacoes">Formação</a>
+        <a href="#shapes">Resultados</a>
         <a href="#servicos">Planos</a>
-        <a href="#faq">FAQ</a>
       </nav>
 
       <a class="nav-cta" href="#contato">COMEÇAR AGORA ↗</a>
@@ -1182,13 +1375,16 @@
     <div class="mobile-menu" id="mobileMenu">
       <a href="#inicio">Início</a>
       <a href="#metodo">Método</a>
+      <a href="#apresentacao">Sobre</a>
+      <a href="#certificacoes">Formação</a>
+      <a href="#shapes">Resultados</a>
       <a href="#servicos">Planos</a>
-      <a href="#faq">FAQ</a>
       <a class="mobile-cta" href="#contato">COMEÇAR AGORA ↗</a>
     </div>
   </header>
 
   <main>
+    <!-- Seção 00: Início -->
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div class="hero-copy fade-in">
@@ -1219,64 +1415,44 @@
       </div>
     </section>
 
-    <!-- Fita Animada com ícones (Raio, Troféu e Halter) -->
+    <!-- Fita Animada -->
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track" id="tickerTrack">
         <div class="ticker-item">
           <span>TEAM OFEUS</span>
-          <!-- Ícone de Raio -->
           <svg viewBox="0 0 24 24">
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
           <span>O FOCO É UM SÓ</span>
-          <!-- Ícone de Troféu -->
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1c1.86-.47 3.25-1.96 3.61-3.96C19.08 11.63 21 9.55 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
           </svg>
           <span>TÁ PAGO</span>
-          <!-- Ícone de Halter -->
           <svg viewBox="0 0 24 24">
             <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
           </svg>
           <span>VITÓRIA</span>
-          <!-- Ícone de Raio -->
           <svg viewBox="0 0 24 24">
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
           <span>DISCIPLINA</span>
-          <!-- Ícone de Troféu -->
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1c1.86-.47 3.25-1.96 3.61-3.96C19.08 11.63 21 9.55 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
           </svg>
           <span>DETERMINAÇÃO</span>
-          <!-- Ícone de Halter -->
           <svg viewBox="0 0 24 24">
             <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
           </svg>
           <span>GUERREIRO</span>
-          <!-- Ícone de Raio -->
           <svg viewBox="0 0 24 24">
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
           <span>GUERREIRA</span>
-          <!-- Ícone de Troféu -->
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1c1.86-.47 3.25-1.96 3.61-3.96C19.08 11.63 21 9.55 21 7V5c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
-          </svg>
-          <span>CAMPEÃO</span>
-          <!-- Ícone de Raio -->
-          <svg viewBox="0 0 24 24">
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-          </svg>
-          <span>CAMPEÃ</span>
-          <!-- Ícone de Halter -->
-          <svg viewBox="0 0 24 24">
-            <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
-          </svg>
         </div>
       </div>
     </div>
 
+    <!-- Seção 01: Método -->
     <section class="section intro" id="metodo">
       <div class="container fade-in">
         <div class="intro-header">
@@ -1289,63 +1465,205 @@
       <div class="container pillars fade-in">
         <article class="pillar">
           <span>01</span>
-          <h3>
-            <svg class="pillar-icon" viewBox="0 0 24 24">
+          <h3><svg class="pillar-icon" viewBox="0 0 24 24">
               <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-            </svg>
-            Avaliar
-          </h3>
+            </svg> Avaliar</h3>
           <p>Entender seu momento, seus objetivos e o que precisa mudar para o treino fazer sentido para você.</p>
         </article>
         <article class="pillar">
           <span>02</span>
-          <h3>
-            <svg class="pillar-icon" viewBox="0 0 24 24">
+          <h3><svg class="pillar-icon" viewBox="0 0 24 24">
               <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z" />
-            </svg>
-            Planejar
-          </h3>
+            </svg> Planejar</h3>
           <p>Estruturar um treino individualizado, com progressão e organização para a sua rotina.</p>
         </article>
         <article class="pillar">
           <span>03</span>
-          <h3>
-            <svg class="pillar-icon" viewBox="0 0 24 24">
+          <h3><svg class="pillar-icon" viewBox="0 0 24 24">
               <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
-            </svg>
-            Acompanhar
-          </h3>
+            </svg> Acompanhar</h3>
           <p>Você tem suporte para tirar dúvidas, registrar evolução e entender o caminho do seu processo.</p>
         </article>
         <article class="pillar">
           <span>04</span>
-          <h3>
-            <svg class="pillar-icon" viewBox="0 0 24 24">
+          <h3><svg class="pillar-icon" viewBox="0 0 24 24">
               <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .43-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.49-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
-            </svg>
-            Ajustar
-          </h3>
+            </svg> Ajustar</h3>
           <p>Com o passar do tempo, o planejamento é revisto para continuar acompanhando sua evolução.</p>
         </article>
       </div>
     </section>
 
+    <!-- Seção 02: Vídeo (Bem-vindo) -->
+    <section class="section intro" id="apresentacao" style="padding-top:0;">
+      <div class="container fade-in text-center">
+        <div class="intro-header">
+          <p class="section-kicker">02 / QUEM SOU EU</p>
+          <h2>BEM-VINDO AO<br><span class="bold-caps">TEAM OFEUS.</span></h2>
+          <p class="intro-copy-text">Conheça um pouco mais sobre quem vai estar lado a lado com você nessa jornada em busca do seu melhor shape.</p>
+        </div>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4?si=YOUR_YOUTUBE_ID" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 03: Certificações (Carrossel Infinito & Fade) -->
+    <section class="section certifications" id="certificacoes">
+      <div class="container fade-in">
+        <div class="intro-header">
+          <p class="section-kicker">03 / FORMAÇÃO & ESPECIALIZAÇÃO</p>
+          <h2>Minha<br><span class="bold-caps">Trajetória.</span></h2>
+          <p class="intro-copy-text">A experiência e o estudo constante para garantir que seu treino tenha sempre base científica, segurança e eficácia comprovada.</p>
+        </div>
+      </div>
+
+      <div class="cert-carousel-wrap fade-in">
+        <div class="cert-carousel" id="certCarousel">
+
+          <!-- Cert 1 -->
+          <div class="cert-card">
+            <div>
+              <h3>Bacharelado em Educação Física</h3>
+              <p>A graduação que forma a base de todo o entendimento técnico sobre a fisiologia, anatomia humana e movimento.</p>
+            </div>
+            <a href="https://www.instagram.com/reel/DbJ7PKMOBi7/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 2 -->
+          <div class="cert-card">
+            <div>
+              <h3>Musculação em Alta Performance</h3>
+              <p>Curso ministrado por um dos grandes expoentes da Old School do fisiculturismo nacional, Fernando Marques.</p>
+            </div>
+            <a href="https://www.instagram.com/p/Csgsq9Pu74-/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 3 -->
+          <div class="cert-card">
+            <div>
+              <h3>Periodização Do Treinamento</h3>
+              <p>Foco em Força, Hipertrofia e Treinamento Combinado (por Belmiro de Salles) e Método Miletnar (por Ray Milet).</p>
+            </div>
+            <a href="https://www.instagram.com/p/Cy3nlVdODpA/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 4 -->
+          <div class="cert-card">
+            <div>
+              <h3>Treinamento de Hipertrofia Feminina</h3>
+              <p>Diferenças fisiológicas/hormonais e foco nas execuções e métodos para otimizar os ganhos de Membros Inferiores.</p>
+            </div>
+            <a href="https://www.instagram.com/p/C0AtHLCNZyT/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 5 -->
+          <div class="cert-card">
+            <div>
+              <h3>Método ACE</h3>
+              <p>Análise de Contexto e Estruturação de Treino avançada, ministrado por Ray Milet.</p>
+            </div>
+            <a href="https://www.instagram.com/p/C1pv47Zub9j/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 6 -->
+          <div class="cert-card">
+            <div>
+              <h3>Curso Xtreme Load</h3>
+              <p>Especialização focada em Controle De Carga de Treinamento, com a excelência do professor Alex Souto Maior.</p>
+            </div>
+            <a href="https://www.instagram.com/p/C2F_y0jOSxO/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 7 -->
+          <div class="cert-card">
+            <div>
+              <h3>Mestre Personal</h3>
+              <p>Elevando o nível técnico e de entrega na Educação Física junto aos professores Josué Cruz e Mestre Personal.</p>
+            </div>
+            <a href="https://www.instagram.com/p/C6pOt8ixuRy/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 8 -->
+          <div class="cert-card">
+            <div>
+              <h3>Força Para Gestantes</h3>
+              <p>Planejamento seguro, eficaz e com base científica para Treinamento de Força para Gestantes, por Ingrid Dias.</p>
+            </div>
+            <a href="https://www.instagram.com/p/DB8iJGNu-DG/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 9 -->
+          <div class="cert-card">
+            <div>
+              <h3>Musculação Avançada</h3>
+              <p>Aprofundamento na ciência da hipertrofia com grandes referências da área, Walter Krause Neto e Jonato Prestes.</p>
+            </div>
+            <a href="https://www.instagram.com/p/DGdqTziOIDn/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 10 -->
+          <div class="cert-card">
+            <div>
+              <h3>Avaliação Postural Personalizada</h3>
+              <p>Identificação de desvios e estruturação correta do treino, ministrada pelo professor Fabio Chiodini (CSS Cursos).</p>
+            </div>
+            <a href="https://www.instagram.com/p/DQ31BDzjgPU/?img_index=3" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 11 -->
+          <div class="cert-card">
+            <div>
+              <h3>Treinamento de Força & Lesões</h3>
+              <p>Aprendizado focado em Biomecânica e prevenção de lesões com a grande referência Rafael Soncin.</p>
+            </div>
+            <a href="https://www.instagram.com/p/DRcE52ejqo5/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+          <!-- Cert 12 -->
+          <div class="cert-card">
+            <div>
+              <h3>GluteLab – CSS Cursos</h3>
+              <p>Métodos de Avaliação Postural focados estritamente na otimização e construção de Coxas e Glúteos.</p>
+            </div>
+            <a href="https://www.instagram.com/p/DaxS0kpkXZd/" target="_blank" class="cert-btn" draggable="false">Ver certificado ↗</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 04: Shapes (Prova Social) -->
+    <section class="section shapes" id="shapes">
+      <div class="container fade-in">
+        <div class="intro-header">
+          <p class="section-kicker">04 / PROVA SOCIAL</p>
+          <h2>Evolução na<br><span class="bold-caps">Prática.</span></h2>
+          <p class="intro-copy-text">Aqui nós não prometemos milagres, mostramos resultados construídos com disciplina e o acompanhamento certo.</p>
+        </div>
+        <div class="shapes-grid">
+          <div class="shape-card"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=600" alt="Evolução Aluno 1" loading="lazy"></div>
+          <div class="shape-card"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80&w=600" alt="Evolução Aluno 2" loading="lazy"></div>
+          <div class="shape-card"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600" alt="Evolução Aluno 3" loading="lazy"></div>
+          <div class="shape-card"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=600" alt="Evolução Aluno 4" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 05: Serviços -->
     <section class="section services" id="servicos">
       <div class="container section-head fade-in">
         <div>
-          <p class="section-kicker">02 / ESCOLHA SEU ACOMPANHAMENTO</p>
+          <p class="section-kicker">05 / ESCOLHA SEU ACOMPANHAMENTO</p>
           <h2>Duas formas de treinar.<br><span class="bold-caps">O MESMO FOCO.</span></h2>
         </div>
         <p>Na consultoria e no presencial, a base do acompanhamento é individualizada. A principal diferença é simples: no presencial, Yan está ao seu lado durante a sessão.</p>
       </div>
 
       <div class="container service-grid fade-in">
-
-        <!-- Plano Consultoria -->
         <article class="service-card" id="consultoria">
           <div class="card-top">
-            <div>
-              <span class="card-number">01</span>
+            <div><span class="card-number">01</span>
               <h3>Consultoria <br>OFEUS</h3>
             </div>
           </div>
@@ -1370,12 +1688,10 @@
           <a class="card-link" href="#contato">CONHECER A CONSULTORIA ↗</a>
         </article>
 
-        <!-- Plano Presencial (Destaque) -->
         <article class="service-card featured" id="presencial">
           <div class="featured-tag">ACOMPANHAMENTO COMPLETO</div>
           <div class="card-top">
-            <div>
-              <span class="card-number">02</span>
+            <div><span class="card-number">02</span>
               <h3>Treino <br>PRESENCIAL</h3>
             </div>
           </div>
@@ -1399,10 +1715,10 @@
           </div>
           <a class="card-link" href="#contato">AGENDAR UMA AULA PRESENCIAL ↗</a>
         </article>
-
       </div>
     </section>
 
+    <!-- Frase de Impacto -->
     <section class="section statement">
       <div class="container fade-in statement-content">
         <div class="quote-icon">“</div>
@@ -1411,10 +1727,39 @@
       </div>
     </section>
 
+    <!-- Seção 06: Feedbacks -->
+    <section class="section feedbacks" id="feedbacks">
+      <div class="container fade-in">
+        <div class="intro-header">
+          <p class="section-kicker">06 / DEPOIMENTOS</p>
+          <h2>O que <br><span class="bold-caps">Eles dizem.</span></h2>
+          <p class="intro-copy-text">A experiência real de quem confiou no processo e transformou a própria rotina de treino.</p>
+        </div>
+        <div class="feedback-grid">
+          <div class="feedback-card">
+            <div class="feedback-stars">★★★★★</div>
+            <p class="feedback-text">"Sempre tive dificuldade em manter constância na academia, mas o planejamento fez toda diferença. Os ajustes no treino encaixaram perfeito na minha rotina e hoje vejo evolução constante."</p>
+            <div class="feedback-author">Lucas M.</div>
+          </div>
+          <div class="feedback-card">
+            <div class="feedback-stars">★★★★★</div>
+            <p class="feedback-text">"O melhor investimento que fiz na minha saúde. Ter um direcionamento claro me fez parar de treinar fofo e focar na progressão. Resultado visível já nos primeiros meses!"</p>
+            <div class="feedback-author">Fernanda C.</div>
+          </div>
+          <div class="feedback-card">
+            <div class="feedback-stars">★★★★★</div>
+            <p class="feedback-text">"A diferença do acompanhamento presencial é surreal. A correção de postura e a motivação durante a aula me fizeram quebrar platôs que eu achava impossível sozinho."</p>
+            <div class="feedback-author">Rafael T.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 07: FAQ -->
     <section class="section faq" id="faq">
       <div class="container faq-grid fade-in">
         <div>
-          <p class="section-kicker">03 / DÚVIDAS</p>
+          <p class="section-kicker">07 / DÚVIDAS</p>
           <h2>PERGUNTAS<br><span class="bold-caps">FREQUENTES.</span></h2>
         </div>
         <div class="faq-list">
@@ -1438,10 +1783,11 @@
       </div>
     </section>
 
+    <!-- Seção 08: Contato -->
     <section class="section contact" id="contato">
       <div class="container contact-box fade-in">
         <div>
-          <p class="section-kicker">04 / COMECE</p>
+          <p class="section-kicker">08 / COMECE</p>
           <h2>O foco é um só.<br><span class="bold-caps">O SEU.</span></h2>
           <p class="contact-copy" style="max-width:400px; color:#bbb; margin-top:20px; font-weight:500;">Escolha a forma de acompanhamento que faz sentido para sua rotina e dê o primeiro passo.</p>
         </div>
@@ -1453,7 +1799,6 @@
     </section>
   </main>
 
-  <!-- Botão Flutuante do WhatsApp -->
   <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp">
     <svg viewBox="0 0 24 24">
       <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.31C14.12 13.56 13.66 14.11 13.5 14.27C13.33 14.44 13.17 14.46 12.92 14.33C12.67 14.21 11.88 13.94 10.95 13.11C10.22 12.46 9.73 11.66 9.58 11.41C9.42 11.16 9.56 11 9.73 10.87C9.88 10.74 10.05 10.51 10.2 10.33C10.37 10.16 10.42 10.03 10.53 9.81C10.64 9.59 10.58 9.4 10.5 9.25C10.42 9.1 9.73 7.41 9.44 6.74C9.16 6.09 8.88 6.18 8.68 6.18C8.5 6.18 8.31 6.18 8.1 6.18C7.9 6.18 7.5 6.2 7.25 6.45V7.33Z" />
@@ -1466,7 +1811,6 @@
         <span class="brand-mark"><img src="img/logo.png" alt="Logo Team OFEUS"></span>
         <span class="brand-copy"><strong>TEAM OFEUS</strong><small>O FOCO É UM SÓ</small></span>
       </div>
-
       <div class="footer-socials">
         <a href="https://www.instagram.com/yanggabrieel/" target="_blank" class="social-link">
           <svg viewBox="0 0 24 24">
@@ -1474,14 +1818,7 @@
           </svg>
           CONHEÇA MEU TRABALHO
         </a>
-        <a href="https://wa.me/5500000000000" target="_blank" class="social-link">
-          <svg viewBox="0 0 24 24">
-            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 14C16.31 13.86 15.09 13.26 14.87 13.18C14.64 13.1 14.5 13.06 14.31 13.31C14.12 13.56 13.66 14.11 13.5 14.27C13.33 14.44 13.17 14.46 12.92 14.33C12.67 14.21 11.88 13.94 10.95 13.11C10.22 12.46 9.73 11.66 9.58 11.41C9.42 11.16 9.56 11 9.73 10.87C9.88 10.74 10.05 10.51 10.2 10.33C10.37 10.16 10.42 10.03 10.53 9.81C10.64 9.59 10.58 9.4 10.5 9.25C10.42 9.1 9.73 7.41 9.44 6.74C9.16 6.09 8.88 6.18 8.68 6.18C8.5 6.18 8.31 6.18 8.1 6.18C7.9 6.18 7.5 6.2 7.25 6.45V7.33Z" />
-          </svg>
-          FALE COMIGO
-        </a>
       </div>
-
       <div class="footer-info">
         <p>Treinamento personalizado, consultoria e acompanhamento presencial.</p>
         <div class="footer-note">© <span id="year"></span> TEAM OFEUS</div>
@@ -1490,15 +1827,13 @@
   </footer>
 
   <script>
-    // Menu mobile toggle com animação
+    // Menu mobile
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-
     menuBtn.addEventListener('click', () => {
       const isOpen = mobileMenu.classList.toggle('open');
       menuBtn.textContent = isOpen ? '✕' : '☰';
     });
-
     document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.remove('open');
@@ -1506,39 +1841,32 @@
       });
     });
 
-    // Atualiza o ano no rodapé automaticamente
+    // Ano footer
     const yearEl = document.getElementById('year');
-    if (yearEl) {
-      yearEl.textContent = new Date().getFullYear();
-    }
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Smooth Scroll para links internos
+    // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
     });
 
-    // Duplicação do Ticker para rolagem infinita contínua
+    // Ticker Infinito (Texto Superior)
     const tickerTrack = document.getElementById('tickerTrack');
     if (tickerTrack) {
-      const tickerContent = tickerTrack.innerHTML;
-      tickerTrack.innerHTML = tickerContent + tickerContent + tickerContent + tickerContent;
+      const content = tickerTrack.innerHTML;
+      tickerTrack.innerHTML = content + content + content + content;
     }
 
-    // Fade-in via IntersectionObserver
+    // Fade-in Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.15 });
-
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     // FAQ Accordion
@@ -1546,12 +1874,109 @@
     details.forEach(targetDetail => {
       targetDetail.addEventListener('click', () => {
         details.forEach(detail => {
-          if (detail !== targetDetail) {
-            detail.removeAttribute('open');
-          }
+          if (detail !== targetDetail) detail.removeAttribute('open');
         });
       });
     });
+
+    // -------------------------------------------------------------
+    // CARROSSEL DE CERTIFICAÇÕES - LOOP INFINITO OTIMIZADO
+    // -------------------------------------------------------------
+    const carousel = document.getElementById('certCarousel');
+    const originalCards = Array.from(carousel.children);
+    let cloneFirst = null;
+
+    // 1. Clona todos os elementos para criar o loop invisível
+    originalCards.forEach((card, index) => {
+      let clone = card.cloneNode(true);
+      carousel.appendChild(clone);
+      if (index === 0) cloneFirst = clone; // Ponto de referência
+    });
+
+    let maxScroll = 0;
+
+    // Função para medir com precisão quando o carrossel deve pular
+    function calcScroll() {
+      if (cloneFirst && carousel.children[0]) {
+        maxScroll = cloneFirst.offsetLeft - carousel.children[0].offsetLeft;
+      }
+    }
+    window.addEventListener('resize', calcScroll);
+    setTimeout(calcScroll, 200); // Aguarda renderizar pra calcular
+
+    // Variáveis de controle
+    let isDown = false;
+    let isPaused = false;
+    let startX;
+    let scrollLeftPos;
+    let speed = 1.0; // Velocidade (reduza para ficar mais lento)
+
+    // O requestAnimationFrame garante fluidez total a 60fps
+    function autoScroll() {
+      // Se não estiver arrastando e nem com o mouse/dedo em cima
+      if (!isDown && !isPaused && maxScroll > 0) {
+        carousel.scrollLeft += speed;
+      }
+
+      // Regra do Pulo Invisível (Seamless)
+      if (maxScroll > 0) {
+        // Se a rolagem passar da metade, ele pula pro começo da cópia exata
+        if (carousel.scrollLeft >= maxScroll) {
+          carousel.scrollLeft -= maxScroll;
+          if (isDown) scrollLeftPos -= maxScroll; // Mantém o toque alinhado
+        }
+        // Se a rolagem voltar antes do começo (quando o usuário arrasta para trás)
+        else if (carousel.scrollLeft <= 0) {
+          carousel.scrollLeft += maxScroll;
+          if (isDown) scrollLeftPos += maxScroll;
+        }
+      }
+
+      requestAnimationFrame(autoScroll);
+    }
+    // Inicia o motor
+    requestAnimationFrame(autoScroll);
+
+    // Desktop: Arrastar com o mouse
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      carousel.style.cursor = 'grabbing';
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeftPos = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+      isDown = false;
+      isPaused = false;
+      carousel.style.cursor = 'grab';
+    });
+
+    carousel.addEventListener('mouseup', () => {
+      isDown = false;
+      carousel.style.cursor = 'grab';
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeftPos - walk;
+    });
+
+    // Pausar auto-scroll ao interagir (hover no PC ou dedo na tela no celular)
+    carousel.addEventListener('mouseenter', () => isPaused = true);
+
+    // Tratamento otimizado para toque em celulares
+    carousel.addEventListener('touchstart', () => {
+      isPaused = true;
+    }, { passive: true }); // passive: true melhora o scroll nativo
+
+    carousel.addEventListener('touchend', () => {
+      // Pequeno delay pra retomar após soltar a tela
+      setTimeout(() => { isPaused = false; }, 600);
+    });
+
   </script>
 </body>
 
